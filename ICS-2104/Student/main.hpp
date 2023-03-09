@@ -1,6 +1,6 @@
 #include <iostream>
 #include <math.h>
-#define SIZE 2
+#define SIZE 10
 
 using namespace std;
 
