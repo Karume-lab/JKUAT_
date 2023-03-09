@@ -2,19 +2,17 @@
 
 int stdDev(cls_t stArray[])
 {
-    float sum =0, dev, disc;
+    float sum = 0, disc;
     int i;
 
     for (i = 0; i < SIZE; i++)
     {
-        disc = stArray[i].Student.units.mean - stArray->mean;
+        disc = pow((stArray[i].Student.units.mean - stArray->mean), 2);
         sum += disc;
     }
 
     disc = sum/SIZE;
-    dev = sqrt(disc);
-
-    stArray->dev = dev;
+    stArray->dev = sqrt(disc);
     
     return (0);
 }

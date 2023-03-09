@@ -13,5 +13,11 @@ int main (void)
     allMean(stdArray);
     printStudent(stdArray);  
 
+    cout<<endl<<"CLASS"<<endl<<endl;
+    // cout<<"STANDARD DEVIATION: "<<stdArray->dev<<endl;
+    cout<<"LOWEST MARK: "<<stdArray->low<<endl;
+    cout<<"HIGHEST MARK: "<<stdArray->high<<endl;
+    cout<<"CLASS MEAN: "<<stdArray->mean<<endl;
+
     return (0);
 }
