@@ -20,6 +20,7 @@ int getData(cls_t stArray[])
         cin>>stArray[i].Student.courseId;
         cout<<"Enter the number of units: ";
         cin>>stArray[i].Student.units.unitNo;
+        cout<<endl;
 
         for (j = 0; j < stArray[i].Student.units.unitNo; j++)
         {
