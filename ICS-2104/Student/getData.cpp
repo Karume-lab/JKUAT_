@@ -7,6 +7,7 @@ int getData(cls_t stArray[])
 
     for (i = 0; i < SIZE; i++)
     {
+        cout<<"DETAILS FOR STUDENT # "<< i+1 <<endl<<endl;
         cout<<"Enter the first name: ";
         cin>>stArray[i].Student.firstName;
         cout<<"Enter the surname: ";
