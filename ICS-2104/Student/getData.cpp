@@ -20,7 +20,6 @@ int getData(cls_t stArray[])
         cin>>stArray[i].Student.courseId;
         cout<<"Enter the number of units: ";
         cin>>stArray[i].Student.units.unitNo;
-        cout<<endl;
 
         for (j = 0; j < stArray[i].Student.units.unitNo; j++)
         {
@@ -29,6 +28,8 @@ int getData(cls_t stArray[])
             cout<<" Enter the marks for "<<stArray[i].Student.units.reg[j]<<" :";
             cin>>stArray[i].Student.units.marks[j];
         }
+        
+        cout<<endl<<endl;
     }
 
     return (0);
