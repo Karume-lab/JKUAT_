@@ -5,14 +5,20 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <string>
+#include <sstream>
+
+
 #include "classes/account.hpp"
 #include "classes/cur_acct.hpp"
 #include "classes/sav_acct.hpp"
 
 
 int getOption(void);
-int getService(void);
-void newCustomer(void);
+int getDetails_s(void);
+int getDetails_c(void);
+int getType(void);
+int listCustomers(void);
 
 
 #endif
