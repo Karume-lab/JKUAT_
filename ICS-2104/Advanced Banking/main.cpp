@@ -3,7 +3,8 @@
 int main(void)
 {
 	Cur_acct acc_c;
-	getService();
+	Sav_acct acc_s;
+	
 	
 	
 
