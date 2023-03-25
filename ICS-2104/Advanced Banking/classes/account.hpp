@@ -1,26 +1,27 @@
 #ifndef _ACCOUNT_HPP_
 #define _ACCOUNT_HPP_
-#include <string>
-using namespace std;
+#include "../main.hpp"
 
 class Account
 {
-	private:
+	protected:
 		string name;
 		string number;
-		char type;
+		int type;
 		double balance;
 		bool chequeBook;
 
 	public:
 		Account();
 		Account(string name, string number, string type, double balance, bool chequeBook);
+		void deposit();
+		double getBalance_a();
 		void setName_a(string name);
 		void setNumber_a(string number);
 		void setType_a(char type);
-		void setBalance_a(double balance);
 		void setChequeBook_a(bool chequeBook);
-		double getBalance_a();
+		void setDeposit(void);
+		void setBalance_a(double balance);
 };
 
 #endif

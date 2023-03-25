@@ -1,4 +1,4 @@
-#include "account.hpp"
+#include "../main.hpp"
 
 Account::Account()
 {
@@ -42,4 +42,12 @@ void Account::setChequeBook_a(bool chequeBook)
 double Account::getBalance_a()
 {
 	return (balance);
+}
+
+void Account::setDeposit(void)
+{
+	double amount;
+	cout << "Enter the amount to be deposited: " << endl;
+	cin >> amount;
+	balance += amount;
 }

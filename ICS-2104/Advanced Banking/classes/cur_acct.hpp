@@ -1,11 +1,12 @@
 #ifndef _CUR_ACCT_HPP_
 #define _CUR_ACCT_HPP_
-#include "account.hpp"
+#include "../main.hpp"
 
 class Cur_acct:private Account
 {
 	public:
-		double getBalance_c();
+		double getBalance_c(void);
+		void new_c (void);
 		
 };
 
