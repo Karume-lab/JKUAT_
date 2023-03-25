@@ -13,7 +13,7 @@ int getOption(void)
 		cout << "4. Check Balance" << endl;
 		cout << "5. List Customers" << endl;
 		cout << "6. Delete Customer" << endl;
-		cout << "7. Update Customer Detials" << endl;
+		cout << "7. Update Customer Details" << endl;
 		cout << "8. Exit System" << endl;
 		cin >> opt;
 	} while (opt <= 0 || opt > 8);
