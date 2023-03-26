@@ -13,41 +13,41 @@ Account::Account(string name, string number, string type, double balance, bool c
 	balance = balance;
 	chequeBook = chequeBook;
 }
-
-void Account::setName_a(string name)
+void Account::listCustomers(void)
 {
-	name = name;
-}
+	int flag;
+	fstream file, fl;
+	file.open("data_c.dat", ios::in | ios::out | ios::binary);
 
-void Account::setNumber_a(string number)
-{
-	number = number;
-}
+	if (file.is_open())
+	{
+		file.seekg(0);
+		while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
+		{
+			cout << "NAME: " << (*this).name << endl;
+			cout << "ACOUNT NUMBER: " << (*this).number << endl;
+		}
+		file.seekp(-sizeof(*this), ios::cur);
+		file.write(reinterpret_cast<char *>(this), sizeof(*this));
+		file.close();
+	}
+	else
+		cout << "Could not open file!\n" << endl;
 
-void Account::setType_a(char type)
-{
-	type = type;
-}
+	fl.open("data_s.dat", ios::in | ios::out | ios::binary);
 
-void Account::setBalance_a(double balance)
-{
-	balance = balance;
-}
-
-void Account::setChequeBook_a(bool chequeBook)
-{
-	chequeBook = chequeBook;
-}
-
-double Account::getBalance_a()
-{
-	return (balance);
-}
-
-void Account::setDeposit(void)
-{
-	double amount;
-	cout << "Enter the amount to be deposited: " << endl;
-	cin >> amount;
-	balance += amount;
+	if (fl.is_open())
+	{
+		fl.seekg(0);
+		while (fl.read(reinterpret_cast<char *>(this), sizeof(*this)))
+		{
+			cout << "NAME: " << (*this).name << endl;
+			cout << "ACOUNT NUMBER: " << (*this).number << endl;
+		}
+		fl.seekp(-sizeof(*this), ios::cur);
+		fl.write(reinterpret_cast<char *>(this), sizeof(*this));
+		fl.close();
+	}
+	else
+		cout << "Could not open file!\n" << endl;
 }
