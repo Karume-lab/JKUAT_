@@ -1,5 +1,7 @@
 #ifndef _MAIN_HPP_
 #define _MAIN_HPP_
+#define CUR_MIN 1000;
+#define SERVICE_CHARGE 0.05;
 using namespace std;
 
 #include <iostream>
@@ -18,7 +20,7 @@ int getOption(void);
 int getDetails_s(void);
 int getDetails_c(void);
 int getType(void);
-int listCustomers(void);
+
 
 
 #endif
