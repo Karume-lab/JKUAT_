@@ -5,8 +5,8 @@
 class Account
 {
 	protected:
-		string name;
-		string number;
+		char name[256];
+		int number;
 		int type;
 		double balance;
 		bool chequeBook;
@@ -14,14 +14,7 @@ class Account
 	public:
 		Account();
 		Account(string name, string number, string type, double balance, bool chequeBook);
-		void deposit();
-		double getBalance_a();
-		void setName_a(string name);
-		void setNumber_a(string number);
-		void setType_a(char type);
-		void setChequeBook_a(bool chequeBook);
-		void setDeposit(void);
-		void setBalance_a(double balance);
+		void listCustomers(void);
 };
 
 #endif
