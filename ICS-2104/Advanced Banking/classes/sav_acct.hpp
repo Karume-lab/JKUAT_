@@ -5,8 +5,12 @@
 class Sav_acct:private Account
 {
 	public:
-		double getBalance_s();
 		void new_s(void);
+		void setDeposit_s(void);
+		void setWithdraw_s(void);
+		void getBalance_s(void);
+		void delete_s(void);
+		void update_s(void);
 		
 };
 
