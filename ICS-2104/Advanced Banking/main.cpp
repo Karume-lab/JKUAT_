@@ -11,6 +11,7 @@ int main(void)
 	while (flag == 0)
 	{
 		choice = getOption();
+		system("clear");
 		switch (choice)
 		{
 		case 1:
