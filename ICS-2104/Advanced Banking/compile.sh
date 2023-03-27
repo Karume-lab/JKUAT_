@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ *.cpp classes/*.cpp -o banking && ./banking
+g++ *.cpp classes/*.cpp utils/*.cpp -o banking && ./banking
