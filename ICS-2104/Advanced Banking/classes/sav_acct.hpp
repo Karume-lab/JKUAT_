@@ -1,7 +1,6 @@
 #ifndef _SAV_ACCT_HPP_
 #define _SAV_ACCT_HPP_
 #include "../main.hpp"
-
 class Sav_acct:private Account
 {
 	public:
@@ -11,8 +10,6 @@ class Sav_acct:private Account
 		void getBalance_s(void);
 		void delete_s(void);
 		void update_s(void);
-		
 };
-
 
 #endif
