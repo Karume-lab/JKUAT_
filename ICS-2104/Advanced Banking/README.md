@@ -16,3 +16,5 @@ Write the program such that it saves the information in a file and with the foll
 	6. Delete Customer
 	7. Update Customer Details
 	8. Exit System
+
+In this project, the problem above was solved. For testing purposes, it is advised to clone the project locally into your machine and run the compile.sh script. The script will compile the entire source code into an executable file called "banking", which can be run from the console.
