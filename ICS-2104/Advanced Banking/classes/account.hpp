@@ -15,6 +15,7 @@ class Account
 		Account();
 		Account(string name, string number, string type, double balance, bool chequeBook);
 		void listCustomers(void);
+		void delete_a(void);
 };
 
 #endif
