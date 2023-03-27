@@ -1,24 +1,23 @@
 #include "../main.hpp"
 
-void Cur_acct::new_c (void)
+void Cur_acct::new_c(void)
 {
-	ofstream file("data_c.dat", ios::app | ios::binary);
+	ofstream file("data_c.dat",ios::app | ios::binary);
 
 	cout << "Enter name: ";
 	cin >> name;
-	cout << "Enter account number: ";
+	cout <<"Enter account number: ";
 	cin >> number;
-	type = 2;
-	chequeBook = true;
-	if (file.is_open())
+	type = 1;
+	chequeBook = false;
+	if (!file.is_open())
 	{
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
-		file.close();
+		cout << "Error in opening the database!" << endl;
 		return;
 	}
-
-	cout << "Error in opening the database!" << endl;
-	return;
+	file.write(reinterpret_cast<char *>(this), sizeof(*this));
+	cout << endl << "Successfully added " << (*this).name << " to the system!" << endl;
+	file.close();
 }
 
 void Cur_acct::setDeposit_c(void)
@@ -28,10 +27,8 @@ void Cur_acct::setDeposit_c(void)
 	fstream file;
 	file.open("data_c.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
-	cout << "Enter the amount to be deposited: " << endl;
-	cin >> amount;
 
 	if (file.is_open())
 	{
@@ -40,13 +37,18 @@ void Cur_acct::setDeposit_c(void)
 		{
 			if ((*this).number == num)
 			{
-				(*this).balance += amount;
+				cout << endl << "Current amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
 				flag = 1;
+				cout << "Enter the amount to be deposited: ";
+				cin >> amount;
+				(*this).balance += amount;
+				file.seekp(-sizeof(*this), ios::cur);
+				file.write(reinterpret_cast<char *>(this), sizeof(*this));
+				cout << "New amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
+				file.close();
 				break;
 			}
 		}
-		file.seekp(-sizeof(*this), ios::cur);
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
 		if (flag == 0)
 			cout << "User does not exist!"<< endl;
 	}
@@ -59,15 +61,10 @@ void Cur_acct::setWithdraw_c(void)
 	double with;
 	int num, flag = 0;
 	fstream file;
-	double min = CUR_MIN;
-	double serv_charge;
 	file.open("data_c.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
-	cout << "Enter the amount to be withdrawn: " << endl;
-	cin >> with;
-	serv_charge = with * SERVICE_CHARGE;
 	if (file.is_open())
 	{
 		file.seekg(0);
@@ -76,23 +73,20 @@ void Cur_acct::setWithdraw_c(void)
 		{
 			if ((*this).number == num)
 			{
+				flag = 1;
+				cout << endl << "Current amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
+				cout << "Enter the amount to be withdrawn: ";
+				cin >> with;
 				if (with > (*this).balance)
-					cout << "Invalid withdraw amount!\n" << endl;
+					cout << "Invalid withdraw amount!" << endl;
 				else
 				{
 					(*this).balance -= with;
-					if (min > (*this).balance)
-					{
-						if ((*this).balance > serv_charge )
-							(*this).balance -= serv_charge;
-					}
 					file.seekp(-sizeof(*this), ios::cur);
 					file.write(reinterpret_cast<char *>(this), sizeof(*this));
-					flag = 1;
+					cout << "The new balance for " << (*this).name << " is : " << (*this).balance << endl;
 					break;
 				}
-				flag = 1;
-				break;
 			}
 		}
 		file.close();
@@ -109,7 +103,7 @@ void Cur_acct::getBalance_c(void)
 	fstream file;
 	file.open("data_c.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
 
 	if (file.is_open())
@@ -119,15 +113,14 @@ void Cur_acct::getBalance_c(void)
 		{
 			if ((*this).number == num)
 			{
-				cout << "Your account balance is: " << (*this).balance << endl;
+				flag = 1;
+				cout << "Your account balance for "<< (*this).name << " is: " << (*this).balance << endl;
 				break;
 			}
 		}
-		file.seekp(-sizeof(*this), ios::cur);
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
+		file.close();
 		if (flag == 0)
 			cout << "User does not exist!"<< endl;
-		file.close();
 	}
 	else
 		cout << "Could not open file!\n" << endl;
@@ -136,13 +129,14 @@ void Cur_acct::getBalance_c(void)
 void Cur_acct::delete_c(void)
 {
 	int num, flag = 0;
+	string nm;
 	ifstream file;
 	ofstream new_file;
 
 
 	file.open("data_c.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
 
 	if (file.is_open())
@@ -154,13 +148,17 @@ void Cur_acct::delete_c(void)
 			while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
 			{
 				if ((*this).number == num)
+				{
+					nm = (*this).name;
 					flag = 1;
+				}	
 				else
 					new_file.write(reinterpret_cast<char *>(this), sizeof(*this));
 			}
 			
 			file.close();
 			new_file.close();
+			cout << "Successfully deleted " << nm << " from the system!" << endl;
 			if (flag == 0)
 			{
 				cout << "Customer not found!" << endl;
@@ -179,5 +177,34 @@ void Cur_acct::delete_c(void)
 
 void Cur_acct::update_c(void)
 {
+	int num, flag = 0;
+	fstream file;
 
+
+	file.open("data_c.dat", ios::in | ios::out | ios::binary);
+
+	cout << "Enter the account number: ";
+	cin >> num;
+
+	if (file.is_open())
+	{
+		file.seekg(0);
+			while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
+			{
+				if ((*this).number == num)
+				{
+					flag = 1;
+					cout << "Enter new accout name: ";
+					cin >> (*this).name;
+					file.seekp(-sizeof(*this), ios::cur);
+					file.write(reinterpret_cast<char *>(this), sizeof(*this));
+				}
+			}
+			
+			file.close();
+			if (flag == 0)
+				cout << "Customer not found!" << endl;
+		}
+	else
+		cout << "Could not open file!\n" << endl;
 }
