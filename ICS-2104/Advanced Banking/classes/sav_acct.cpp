@@ -1,6 +1,6 @@
 #include "../main.hpp"
 
-void Sav_acct::new_s (void)
+void Sav_acct::new_s(void)
 {
 	ofstream file("data_s.dat",ios::app | ios::binary);
 
@@ -10,28 +10,26 @@ void Sav_acct::new_s (void)
 	cin >> number;
 	type = 1;
 	chequeBook = false;
-	if (file.is_open())
+	if (!file.is_open())
 	{
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
-		file.close();
+		cout << "Error in opening the database!" << endl;
 		return;
 	}
-
-	cout << "Error in opening the database!" << endl;
-	return;
+	file.write(reinterpret_cast<char *>(this), sizeof(*this));
+	cout << endl << "Successfully added " << (*this).name << " to the system!" << endl;
+	file.close();
 }
 
 void Sav_acct::setDeposit_s(void)
-{	
-	double amount;
-	int num, flag = 0;
+{
+	double amount, rate = COMPOUND_RATE;
+	int num, yrs, flag = 0;
 	fstream file;
+
 	file.open("data_s.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
-	cout << "Enter the amount to be deposited: " << endl;
-	cin >> amount;
 
 	if (file.is_open())
 	{
@@ -40,14 +38,21 @@ void Sav_acct::setDeposit_s(void)
 		{
 			if ((*this).number == num)
 			{
-				(*this).balance += amount;
+				cout << endl << "Current amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
 				flag = 1;
+				cout << endl << "Enter the amount to be deposited: ";
+				cin >> amount;
+				cout << "For how many years are you planning on depositing? ";
+				cin >> yrs;
+				amount = amount * pow((1 + rate), yrs);
+				(*this).balance += amount;
+				file.seekp(-sizeof(*this), ios::cur);
+				file.write(reinterpret_cast<char *>(this), sizeof(*this));
+				cout << "New amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
+				file.close();
 				break;
 			}
 		}
-		file.seekp(-sizeof(*this), ios::cur);
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
-		file.close();
 		if (flag == 0)
 			cout << "User does not exist!"<< endl;
 	}
@@ -62,11 +67,8 @@ void Sav_acct::setWithdraw_s(void)
 	fstream file;
 	file.open("data_s.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
-	cout << "Enter the amount to be withdrawn: " << endl;
-	cin >> with;
-
 	if (file.is_open())
 	{
 		file.seekg(0);
@@ -75,15 +77,18 @@ void Sav_acct::setWithdraw_s(void)
 		{
 			if ((*this).number == num)
 			{
+				cout << endl << "Current amount in "<< (*this).name <<"'s account: " << (*this).balance << endl;
+				flag = 1;
+				cout << "Enter the amount to be withdrawn: ";
+				cin >> with;
 				if (with > (*this).balance)
 					cout << "Invalid withdraw amount!" << endl;
 				else
 				{
 					(*this).balance -= with;
-					cout << "LJSHDJLFHSDLJH: " << (*this).balance << endl;
 					file.seekp(-sizeof(*this), ios::cur);
 					file.write(reinterpret_cast<char *>(this), sizeof(*this));
-					flag = 1;
+					cout << "The new balance for " << (*this).name << " is :" << (*this).balance << endl;
 					break;
 				}
 			}
@@ -102,7 +107,7 @@ void Sav_acct::getBalance_s(void)
 	fstream file;
 	file.open("data_s.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
 
 	if (file.is_open())
@@ -112,12 +117,11 @@ void Sav_acct::getBalance_s(void)
 		{
 			if ((*this).number == num)
 			{
-				cout << "Your account balance is: " << (*this).balance << endl;
+				flag = 1;
+				cout << "Your account balance for "<< (*this).name << " is: " << (*this).balance << endl;
 				break;
 			}
 		}
-		file.seekp(-sizeof(*this), ios::cur);
-		file.write(reinterpret_cast<char *>(this), sizeof(*this));
 		file.close();
 		if (flag == 0)
 			cout << "User does not exist!"<< endl;
@@ -129,44 +133,14 @@ void Sav_acct::getBalance_s(void)
 void Sav_acct::delete_s(void)
 {
 	int num, flag = 0;
-	fstream file;
-
-	file.open("data_s.dat", ios::in | ios::out | ios::binary);
-	cout << "Enter the account number: " << endl;
-	cin >> num;
-
-	if (file.is_open())
-	{
-		file.seekg(0);
-		while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
-		{
-			if ((*this).number == num)
-			{
-				cout << "Enter the new name" << endl;
-				cin >> (*this).name;
-				file.seekp(-sizeof(*this), ios::cur);
-				file.write(reinterpret_cast<char *>(this), sizeof(*this));
-				file.close();
-				flag = 1;
-			}
-		}
-
-		file.close();
-	}
-	else
-		cout << "Could not open file!\n" << endl;
-}
-
-void Sav_acct::update_s(void)
-{
-	int num, flag = 0;
+	string nm;
 	ifstream file;
 	ofstream new_file;
 
 
 	file.open("data_s.dat", ios::in | ios::out | ios::binary);
 
-	cout << "Enter the account number: " << endl;
+	cout << "Enter the account number: ";
 	cin >> num;
 
 	if (file.is_open())
@@ -178,13 +152,17 @@ void Sav_acct::update_s(void)
 			while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
 			{
 				if ((*this).number == num)
+				{
+					nm = (*this).name;
 					flag = 1;
+				}	
 				else
 					new_file.write(reinterpret_cast<char *>(this), sizeof(*this));
 			}
 			
 			file.close();
 			new_file.close();
+			cout << "Successfully deleted " << nm << " from the system!" << endl;
 			if (flag == 0)
 			{
 				cout << "Customer not found!" << endl;
@@ -197,6 +175,40 @@ void Sav_acct::update_s(void)
 			}
 		}
 	}
+	else
+		cout << "Could not open file!\n" << endl;
+}
+
+void Sav_acct::update_s(void)
+{
+	int num, flag = 0;
+	fstream file;
+
+
+	file.open("data_s.dat", ios::in | ios::out | ios::binary);
+
+	cout << "Enter the account number: ";
+	cin >> num;
+
+	if (file.is_open())
+	{
+		file.seekg(0);
+			while (file.read(reinterpret_cast<char *>(this), sizeof(*this)))
+			{
+				if ((*this).number == num)
+				{
+					flag = 1;
+					cout << "Enter new accout name: ";
+					cin >> (*this).name;
+					file.seekp(-sizeof(*this), ios::cur);
+					file.write(reinterpret_cast<char *>(this), sizeof(*this));
+				}
+			}
+			
+			file.close();
+			if (flag == 0)
+				cout << "Customer not found!" << endl;
+		}
 	else
 		cout << "Could not open file!\n" << endl;
 }
