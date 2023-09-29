@@ -1,3 +1,8 @@
+"""
+DANIEL KARUME
+SCT211-0072/2022
+"""
+
 name = input('Enter username: ')
 print('\n\n')
 print(f'Welcome {name} to our simple calculator!')
