@@ -1,2 +1,2 @@
 ## JKUAT_ ##
-Projects and Assignments
+Projects
