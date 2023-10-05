@@ -1,3 +1,8 @@
+"""
+DANIEL KARUME
+SCT211-0072/2022
+"""
+
 def tip_calc():
 	TIP_OPTIONS = (10, 12, 15)
 	total = float(input('Enter the total bill amount: '))

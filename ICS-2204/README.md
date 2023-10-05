@@ -8,3 +8,9 @@ dob.py:
 
 tip_calc.py
 	Tip calculator
+
+bmi.py
+	Calculating the BMI of a person
+
+check_leap.py
+	Checks if a year is a leap year or not
