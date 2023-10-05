@@ -5,3 +5,6 @@ calculator.py:
 
 dob.py:
 	An age calculator
+
+tip_calc.py
+	Tip calculator
