@@ -11,3 +11,5 @@ def tip_calc():
 	total_amount = total + tip_amount
 	each_amount = total_amount / split
 	return f'Each person to pay: KSh {each_amount:.2f}'
+
+print(tip_calc())
