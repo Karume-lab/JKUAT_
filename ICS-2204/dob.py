@@ -23,3 +23,5 @@ def get_age():
 	except ValueError:
 		raise ValueError('Invalid Date!')
 	return f'You are {days} {months} {years} old'
+
+print(get_age())
