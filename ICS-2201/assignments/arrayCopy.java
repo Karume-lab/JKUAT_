@@ -9,7 +9,7 @@ public class arrayCopy {
 		return arrayDup;
 	}
 
-	public static void main() {
+	public static void main(String[] args) {
 		int[] numA = { 1, 2, 3, 4, 5 };
 		int[] numArray = arrayCpy(numA);
 
