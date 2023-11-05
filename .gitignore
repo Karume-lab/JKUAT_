@@ -1,0 +1,6 @@
+classwork/
+Technoverse/
+*.txt
+.vscode/
+__pycache__/
+*.out
