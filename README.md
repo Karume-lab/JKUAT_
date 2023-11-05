@@ -1,2 +1,0 @@
-## JKUAT_ ##
-PROJECTS

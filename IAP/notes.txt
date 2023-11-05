@@ -1,4 +1,0 @@
-flexbox
-grid
-selectors
-media queries
