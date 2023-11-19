@@ -1,5 +1,3 @@
-import java.lang.Math.*;
-
 /**
  * Shape
  */
