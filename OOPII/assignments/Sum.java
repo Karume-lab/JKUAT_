@@ -1,5 +1,3 @@
-package assignments;
-
 public class Sum {
 	public static int sum(int[] numArray) {
 		int newSum = 0;

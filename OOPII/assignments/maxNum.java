@@ -1,5 +1,3 @@
-package assignments;
-
 public class maxNum {
 	public static int findMaxNum(int[] numArray) {
 		int max = numArray[0];

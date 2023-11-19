@@ -1,5 +1,3 @@
-package assignments;
-
 public class arrayCopy {
 	public static int[] arrayCpy(int[] numArray) {
 		int[] arrayDup = new int[numArray.length];

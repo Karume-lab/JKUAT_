@@ -1,5 +1,3 @@
-package assignments;
-
 public class sumMultiDArray {
 	public static int sum2DArray(int[][] numArray) {
 		int sum = 0;

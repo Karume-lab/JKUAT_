@@ -1,4 +1,4 @@
-package assignments;
+
 
 public class Area {
 	public static double area(int radius) {
