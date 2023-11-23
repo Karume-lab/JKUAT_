@@ -4,8 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	const tasksUl = document.querySelector('#tasks');
 	submit.disabled = true;
 
-	newTask.addEventListener('change', () => {
-		submit.disabled = false;
+	newTask.addEventListener('input', () => {
+		if (newTask.value.length > 1) {
+			submit.disabled = false;
+		} else {
+			submit.disabled = true;
+		}
 	});
 
 	document.getElementsByTagName('form')[0].addEventListener('submit', (e) => {
@@ -13,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		newTaskLi.innerText = newTask.value;
 		tasksUl.append(newTaskLi);
 		newTask.value = '';
+		submit.disabled = true;
 		e.preventDefault();
 	});
 });
