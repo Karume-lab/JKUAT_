@@ -1,0 +1,11 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+
+{% block title %}Todo{% endblock title %}
+{% block body %}
+<h1>Tasks</h1>
+<span>Welcome, how may we be of service?</span>
+<a href="{% url 'todo:new_task' %}">New Task</a>
+<a href="{% url 'todo:tasks_list' %}">View Tasks</a>
+{% endblock body %}

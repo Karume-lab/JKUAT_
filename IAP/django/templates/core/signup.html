@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Sign up {% endblock title %}
+
+{% block body %}
+	<form action="POST">
+		{% csrf_token %}
+		<label for="firstName">First Name</label>
+		<input type="text" placeholder="Enter first name" required><br>
+		<label for="surname">Surname</label>
+		<input type="text" placeholder="Enter surname" required><br>
+		<label for="email">Email</label>
+		<input type="email" name="email" placeholder="Enter email" required><br>
+		<label for="password1">Password</label>
+		<input type="password" placeholder="Enter password" name="password1"><br>
+		<label for="password2">Confirm Password</label>
+		<input type="password" placeholder="Enter password again" name="password2"><br>
+		<button type="submit">Sign up</button>
+		<button type="reset">Clear</button>
+	</form>
+{% endblock body %}

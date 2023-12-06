@@ -1,0 +1,14 @@
+{% extends 'todo/base.html' %}
+
+
+{% block title %}New Task{% endblock title %}
+{% block body %}
+<form method="post">
+  {% csrf_token %}
+  <label for="title">Title</label>
+  <input type="text" name="title" placeholder="Task title goes here" required />
+  <label for="description">Description</label>
+  <textarea name="description" placeholder="Enter task description" required></textarea>
+  <button type="submit">Add</button>
+</form>
+{% endblock body %}
