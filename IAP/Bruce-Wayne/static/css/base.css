@@ -1,0 +1,26 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: #016E85;
+}
+
+a:hover {
+	color: #FED95D;
+}
+
+li {
+	list-style-type: none;
+}
+
+/* 
+#2F2F30
+#9BAFB2
+#016E85
+#B2C7D3
+#FED95D
+*/

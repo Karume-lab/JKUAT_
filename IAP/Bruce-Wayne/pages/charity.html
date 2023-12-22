@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./../static/css/base.css">
+        <link rel="stylesheet" href="./../static/css/charity.css">
+        <title>Bruce Wayne | DONATE</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#about">ABOUT US</a>
+                    </li>
+                    <li>
+                        <a href="#why">WHY THE WAYNE CHARITY?</a>
+                    </li>
+                    <li>
+                        <a href="#donate">DONATE TO US</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1>The Wayne Charity</h1>
+            <section id="about">
+                <h2>ABOUT US</h2>
+                Welcome to the Wayne Charity, founded by philanthropist Bruce Wayne, a beacon of hope in the heart
+                of Gotham City. Committed to making a lasting impact on the community, our charity is dedicated to 
+                addressing the multifaceted challenges faced by the city's residents. We operate with a focus on 
+                education, healthcare, and social justice initiatives. By providing scholarships, supporting schools, 
+                and implementing mentorship programs, we strive to empower the youth of Gotham to reach their full 
+                potential. In the realm of healthcare, the Wayne Charity collaborates with medical professionals to 
+                improve access to quality care and advocates for public health awareness. Additionally, our commitment 
+                to social justice is reflected in initiatives that address inequality, homelessness, and systemic
+                issues affecting the vulnerable populations of Gotham. Guided by Bruce Wayne's vision, the Wayne Charity
+                employs a holistic and community-centered approach, ensuring that every endeavor is grounded in the 
+                principles of compassion, equality, and sustainable change. Together, we work towards a Gotham that 
+                thrives on solidarity and opportunity for all.
+            </section>
+            <section id="why">
+                <h2>WHY THE WAYNE CHARITY?</h2>
+                The Wayne Charity was born out of Bruce Wayne's unwavering commitment to transform the challenges faced 
+                by Gotham City into opportunities for positive change. Motivated by personal experiences and a deep 
+                understanding of the struggles within the community, Bruce envisioned a charitable organization that 
+                could serve as a beacon of hope and catalyst for transformation. Witnessing the socio-economic 
+                disparities and the impact of crime on Gotham's residents firsthand, Bruce felt a profound 
+                responsibility to leverage his family's wealth and influence for the greater good. 
+                The Wayne Charity, founded on the principles of compassion and justice, aims to address the root 
+                causes of societal issues, offering a helping hand to those in need. Bruce's motivation stems from 
+                a genuine belief that everyone, regardless of their circumstances, deserves a chance at a better life, 
+                and the Wayne Charity stands as a testament to his enduring commitment to building a brighter and more 
+                equitable future for Gotham.
+            </section>
+            <section id="donate">
+                <form action="#" method="post" id="donate-form">
+                    <fieldset>
+                        <legend>Donate to The Wayne Charity</legend>
+                        <label for="firstname">First Name</label>
+                        <input id="firstname" type="text" name="firstname" required>
+                        <label for="surname">Surname</label>
+                        <input id="surname" type="text" name="surname" required>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required>
+                        <label for="donation">Means of Donation</label>
+                        <select id="donation" name="donation" required>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="cash">Cash</option>
+                            <option value="paypal">Paypal</option>
+                            <option value="crypto">Crypto</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </fieldset>
+                    <div>
+                        <button type="reset">Clear</button>
+                        <button type="submit">Donate ♥</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <footer></footer>
+        <script src="./../static/script/charity.js"></script>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+.navbar {
+	display: flex;
+	background-color: #2F2F30;
+	padding: 10px;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+
+.nav-links,
+.rest-pages {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.nav-links li,
+.rest-pages li {
+	margin: 5px;
+}
+
+.index-logo {
+	width: 100px;
+	height: 100px;
+	opacity: 0.5;
+}
+
+.index-logo:hover {
+	opacity: 1;
+}
+
+.associates {
+	width: 50px;
+	height: 50px;
+	opacity: 0.5;
+}
+
+.donate {
+	width: 100px;
+	height: 100px;
+	opacity: 0.5;
+}
+
+.associates:hover,
+.donate:hover {
+	opacity: 1;
+}
+
+section div {
+	display: flex;
+	align-items: center;
+}
+
+section h2 {
+	text-align: center;
+	font-size: 60px;
+	text-decoration: underline;
+}
+
+
+h1,
+h2,
+h3 {
+	color: #333;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
+li {
+	margin-bottom: 20px;
+}
+
+fieldset {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input,
+select {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #555;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+}
+
+#bio div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#distinctions ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#distinctions li {
+	flex-basis: calc(33.33% - 20px);
+}
+
+#distinctions img,
+#distinctions div img,
+#contributions div img {
+	max-width: 100%;
+	height: auto;
+}
+
+#contributions ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#contributions li {
+	flex-basis: calc(33.33% - 20px);
+}
+
+#books {
+	text-align: center;
+}
+
+footer .socials {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.footer .socials img {
+	width: 30px;
+	height: 30px;
+	margin: 0 10px;
+}
