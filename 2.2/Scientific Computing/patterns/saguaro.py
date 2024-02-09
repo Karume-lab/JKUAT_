@@ -29,7 +29,6 @@ BACK_SLASH = "\\"
 FORWARD_SLASH = "/"
 LEAF_SIZE = 3
 STEM_SIZE = 6
-saguaro = ""
 
 
 def spaces(count: int) -> str:
@@ -161,7 +160,19 @@ def lower_stem_segment():
 
 def main():
     """Entry point"""
-    saguaro =  top() + upper_stem_segment() + joint() + char_multiplier(LOWERCASE_X, LEAF_SIZE) + middle_stem_segment() + spaces(4) + joint()[::-1] + lower_stem_segment()
+    saguaro = (
+        top()
+        + "\n"
+        + upper_stem_segment()
+        + joint()
+        + char_multiplier(LOWERCASE_X, LEAF_SIZE)
+        + "\n"
+        + middle_stem_segment()
+        + spaces(4)
+        + joint()[::-1]
+        + "\n"
+        + lower_stem_segment()
+    )
     print(saguaro)
 
 
