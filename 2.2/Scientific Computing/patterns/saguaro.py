@@ -72,6 +72,7 @@ def format_x(middle: str) -> str:
 
 
 def top():
+    """Constructs the string for the first line of the cactus"""
     return (
         spaces(1)
         + char_multiplier(LOWERCASE_X, LEAF_SIZE)
