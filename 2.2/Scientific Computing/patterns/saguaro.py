@@ -29,19 +29,7 @@ BACK_SLASH = "\\"
 FORWARD_SLASH = "/"
 LEAF_SIZE = 3
 STEM_SIZE = 6
-
-
-def spaces(count: int) -> str:
-    """Constructs the spaces in between the characters
-
-    Args:
-        count (int): number of spaces to be printed
-
-    Returns:
-        str: the spaces
-    """
-
-    return " " * count
+SPACE = " "
 
 
 def char_multiplier(source: chr, count: int) -> str:
@@ -74,9 +62,9 @@ def format_x(middle: str) -> str:
 def top():
     """Constructs the string for the first line of the cactus"""
     return (
-        spaces(1)
+        char_multiplier(SPACE, 1)
         + char_multiplier(LOWERCASE_X, LEAF_SIZE)
-        + spaces(4)
+        + char_multiplier(SPACE, 4)
         + char_multiplier(LOWERCASE_X, LEAF_SIZE * 2)
     )
 
@@ -113,10 +101,10 @@ def joint() -> str:
     """
 
     return (
-        spaces(1)
+        char_multiplier(SPACE, 1)
         + char_multiplier(LOWERCASE_X, STEM_SIZE)
         + format_x(char_multiplier("~", STEM_SIZE))
-        + spaces(3)
+        + char_multiplier(SPACE, 3)
     )
 
 
@@ -126,7 +114,7 @@ def upper_stem_segment():
     for i in range(STEM_SIZE - 1):
         segment += (
             format_x(char_multiplier(HYPHEN, LEAF_SIZE))
-            + spaces(2)
+            + char_multiplier(SPACE, 2)
             + format_x(FORWARD_SLASH * (i + 1) + ("-" * (STEM_SIZE - (i + 1))))
         )
         if i < STEM_SIZE - 1:
@@ -139,9 +127,9 @@ def middle_stem_segment():
     segment = ""
     for i in range(STEM_SIZE - 1):
         segment += (
-            spaces(7)
+            char_multiplier(SPACE, 7)
             + format_x(("-" * (STEM_SIZE - (i + 1)) + BACK_SLASH * (i + 1)))
-            + spaces(2)
+            + char_multiplier(SPACE, 2)
             + format_x(char_multiplier(HYPHEN, LEAF_SIZE))
         )
         if i < STEM_SIZE - 1:
@@ -153,7 +141,7 @@ def lower_stem_segment():
     """Constructs the lower stem segment"""
     segment = ""
     for i in range(STEM_SIZE - 1):
-        segment += spaces(7) + format_x(char_multiplier(TILDE, STEM_SIZE))
+        segment += char_multiplier(SPACE, 7) + format_x(char_multiplier(TILDE, STEM_SIZE))
         if i < STEM_SIZE - 1:
             segment += "\n"
     return segment
@@ -169,7 +157,7 @@ def main():
         + char_multiplier(LOWERCASE_X, LEAF_SIZE)
         + "\n"
         + middle_stem_segment()
-        + spaces(4)
+        + char_multiplier(SPACE, 4)
         + joint()[::-1]
         + "\n"
         + lower_stem_segment()
