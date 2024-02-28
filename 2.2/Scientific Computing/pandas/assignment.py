@@ -32,13 +32,14 @@ Pie Chart or Bar Chart:
 
     Display the distribution of classes in the dataset.
 """
+
 import pandas as pd
 from matplotlib import pyplot as plt
 
 df_excel = pd.read_excel("./data/DryBeanDataset/Dry_Bean_Dataset.xlsx")
 df_excel.plot(kind="scatter", x="MajorAxisLength", y="MinorAxisLength")
 # plt.savefig("./images/bar1")
-df_excel.plot(kind="bar")
+df_excel.plot(kind="bar", x="Area", y="Perimeter")
 # plt.savefig("./images/scatter_plot-area_perimeter")
 
 df_csv = pd.read_csv("./data/bc/wdbc.data")
