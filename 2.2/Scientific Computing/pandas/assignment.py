@@ -37,11 +37,13 @@ from matplotlib import pyplot as plt
 
 df_excel = pd.read_excel("./data/DryBeanDataset/Dry_Bean_Dataset.xlsx")
 df_excel.plot(kind="scatter", x="MajorAxisLength", y="MinorAxisLength")
-# df_excel.plot(kind="bar")
+# plt.savefig("./images/bar1")
+df_excel.plot(kind="bar")
 # plt.savefig("./images/scatter_plot-area_perimeter")
 
 df_csv = pd.read_csv("./data/bc/wdbc.data")
 df_csv.plot(kind="scatter", x="area1", y="perimeter1")
-df_csv.plot(kind="bar")
-plt.savefig("./images/scatter_plot-area1_perimeter1")
+# plt.savefig("./images/scatter_plot-area1_perimeter1")
+df_csv.plot(kind="bar", x="perimeter1", y="area1")
+# plt.savefig("./images/bar2")
 plt.show()
